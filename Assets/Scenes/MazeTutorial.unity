@@ -113,6 +113,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mazePrefab: {fileID: 11404684, guid: c1099bb9f5208442481615240c909c30, type: 2}
+  playerPrefab: {fileID: 11498234, guid: 0e4b1588cfa663f4dae3ea14cfc84860, type: 2}
 --- !u!4 &960192246
 Transform:
   m_ObjectHideFlags: 0
@@ -150,7 +151,7 @@ AudioListener:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1542594879}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!124 &1542594881
 Behaviour:
   m_ObjectHideFlags: 0
@@ -174,7 +175,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: .192156866, g: .301960796, b: .474509805, a: .0196078438}
+  m_BackGroundColor: {r: .889705896, g: .353265584, b: .353265584, a: .0196078438}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -186,7 +187,7 @@ Camera:
   field of view: 60
   orthographic: 0
   orthographic size: 5
-  m_Depth: -1
+  m_Depth: 1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -205,8 +206,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1542594879}
-  m_LocalRotation: {x: .707106709, y: -1.42108547e-14, z: -1.42108547e-14, w: .707106829}
-  m_LocalPosition: {x: 0, y: 55.4599991, z: 1.89999998}
+  m_LocalRotation: {x: .707005382, y: .0119782407, z: -.0119782435, w: .707005262}
+  m_LocalPosition: {x: 1.97000003, y: 18.6000004, z: .200000003}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

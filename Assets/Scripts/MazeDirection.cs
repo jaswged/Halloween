@@ -45,4 +45,12 @@ public static class MazeDirections{
 	public static IntVector2 ToIntVector2 (this MazeDirection direction) {
 		return vectors[(int)direction];
 	}
+
+    public static MazeDirection GetNextClockwise(this MazeDirection direction) {
+        return (MazeDirection)(((int)direction + 1) % COUNT);
+    }
+
+    public static MazeDirection GetNextCounterclockwise(this MazeDirection direction) {
+        return (MazeDirection)(((int)direction + COUNT - 1) % COUNT);
+    }
 }

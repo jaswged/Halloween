@@ -40,8 +40,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   size:
-    X: 30
-    Z: 30
+    X: 20
+    Z: 20
   cellPrefab: {fileID: 11428766, guid: 5163325bcc27a446bb40407eaf9e5fcd, type: 2}
   passagePrefab: {fileID: 11490930, guid: 6bf384bd15fab44d7b24a419cc607aeb, type: 2}
   wallPrefab: {fileID: 11414554, guid: 6310daa5bda2d45f2a0d861fc3197845, type: 2}
@@ -82,11 +82,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: size.X
-      value: 30
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: size.Z
-      value: 30
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
