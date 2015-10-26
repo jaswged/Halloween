@@ -12,7 +12,7 @@ public class Maze : MonoBehaviour {
 	private MazeCell[,] cells;
 
 
-	public float generateStepDelay = .01f;
+	public float generateStepDelay = .001f;
 
 	public MazeCell GetCell(IntVector2 coordinates){
 		return cells[coordinates.X,coordinates.Z];
@@ -21,8 +21,9 @@ public class Maze : MonoBehaviour {
 	public IEnumerator Generate(){
 		WaitForSeconds delay = new WaitForSeconds(generateStepDelay);
 		Debug.Log("Generating the maze");
+        float begginningTime = Time.time;
 
-		cells = new MazeCell[size.X,size.Z];
+        cells = new MazeCell[size.X,size.Z];
 
 		List<MazeCell> activeCells = new List<MazeCell>();
 		DoFirstGenerationStep(activeCells);
@@ -31,7 +32,8 @@ public class Maze : MonoBehaviour {
 			yield return delay;
 			DoNextGenerationStep(activeCells);
 		}
-		Debug.Log("Maze is completed!");
+        float timeItTook = Time.time - begginningTime;
+        Debug.Log("Maze is completed! It took " + timeItTook + " seconds.");
 	}
 
 	private void DoFirstGenerationStep(List<MazeCell> activeCells){

@@ -13,23 +13,19 @@ public class MazeCell : MonoBehaviour {
     
     public void SetEdge (MazeDirection direction, MazeCellEdge edge) {
         edges[(int)direction] = edge;
+        initializedEdgeCount += 1;
     }
 
     public bool IsFullyInitialized {
         get {
-            return initializedEdgeCount == MazeDirections.Count;
+            return initializedEdgeCount == MazeDirections.COUNT;
         }
-    }
-
-    public void SetEdge(MazeDirection direction, MazeCellEdge edge) {
-        edges[(int)direction] = edge;
-        initializedEdgeCount += 1;
     }
 
     public MazeDirection RandomUninitializedDirection {
         get {
-            int skips = Random.Range(0, MazeDirections.Count - initializedEdgeCount);
-            for (int i = 0; i < MazeDirections.Count; i++) {
+            int skips = Random.Range(0, MazeDirections.COUNT - initializedEdgeCount);
+            for (int i = 0; i < MazeDirections.COUNT; i++) {
                 if (edges[i] == null) {
                     if (skips == 0) {
                         return (MazeDirection)i;

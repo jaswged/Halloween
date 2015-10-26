@@ -37,9 +37,6 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
---- !u!127 &3
-LevelGameManager:
-  m_ObjectHideFlags: 0
 --- !u!157 &4
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -68,6 +65,7 @@ LightmapSettings:
     m_TextureCompression: 1
     m_FinalGather: 0
     m_FinalGatherRayCount: 1024
+    m_ReflectionCompression: 2
   m_LightmapSnapshot: {fileID: 0}
   m_RuntimeCPUUsage: 25
 --- !u!196 &5
@@ -195,6 +193,7 @@ Camera:
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
+  m_TargetEye: 3
   m_HDR: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -207,53 +206,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1542594879}
   m_LocalRotation: {x: .707106709, y: -1.42108547e-14, z: -1.42108547e-14, w: .707106829}
-  m_LocalPosition: {x: 0, y: 98.9000015, z: 1.89999998}
+  m_LocalPosition: {x: 0, y: 55.4599991, z: 1.89999998}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
---- !u!1001 &1794953884
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 421526, guid: 5163325bcc27a446bb40407eaf9e5fcd, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -3.58700037
-      objectReference: {fileID: 0}
-    - target: {fileID: 421526, guid: 5163325bcc27a446bb40407eaf9e5fcd, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: -3.36783218
-      objectReference: {fileID: 0}
-    - target: {fileID: 421526, guid: 5163325bcc27a446bb40407eaf9e5fcd, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: -7.24550629
-      objectReference: {fileID: 0}
-    - target: {fileID: 421526, guid: 5163325bcc27a446bb40407eaf9e5fcd, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 421526, guid: 5163325bcc27a446bb40407eaf9e5fcd, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 421526, guid: 5163325bcc27a446bb40407eaf9e5fcd, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 421526, guid: 5163325bcc27a446bb40407eaf9e5fcd, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 421526, guid: 5163325bcc27a446bb40407eaf9e5fcd, type: 2}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 5163325bcc27a446bb40407eaf9e5fcd, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &2017048721
 GameObject:
   m_ObjectHideFlags: 0
