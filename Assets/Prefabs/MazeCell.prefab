@@ -27,6 +27,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 421526}
   - 114: {fileID: 11428766}
+  - 65: {fileID: 6559728}
   m_Layer: 0
   m_Name: MazeCell
   m_TagString: Untagged
@@ -41,7 +42,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 190260}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.90403938, y: 3.40676689, z: .501280785}
+  m_LocalPosition: {x: -7.55212593, y: -2.41787195, z: .477869034}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 444742}
@@ -102,6 +103,18 @@ MeshCollider:
   serializedVersion: 2
   m_Convex: 0
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!65 &6559728
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 190260}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: .0399999991, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &11428766
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -113,6 +126,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51f1624819c5146e9a0e8f309a82f863, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  coordinates:
+    X: 0
+    Z: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

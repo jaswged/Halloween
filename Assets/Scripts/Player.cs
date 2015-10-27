@@ -1,9 +1,19 @@
 using UnityEngine;
 
 public class Player : MonoBehaviour {
-
     private MazeCell currentCell;
     private MazeDirection currentDirection;
+
+    CharacterController characterController;
+    public float mouseSensitivity = 4.0f;
+    //float verticalRotation = 0;
+    public float movementSpeed = 6.0f;
+   // public float runSpeedRatioMultiplier = 1.6f;
+   // float verticalVelocity = 0;
+
+    void Awake() {
+        characterController = GetComponent<CharacterController>();
+    }
 
     public void SetLocation(MazeCell cell) {
         currentCell = cell;
@@ -23,7 +33,7 @@ public class Player : MonoBehaviour {
     }
 
     private void Update() {
-        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) {
+        /*if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) {
             Move(currentDirection);
         }
         else if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow)) {
@@ -40,6 +50,20 @@ public class Player : MonoBehaviour {
         }
         else if (Input.GetKeyDown(KeyCode.E)) {
             Rotate(currentDirection.GetNextClockwise()); // was Look()
-        }
+        }*/
+        float rotLeftRight = Input.GetAxis("Mouse X") * mouseSensitivity;
+        transform.Rotate(0, rotLeftRight, 0);
+
+        float forwardSpeed = Input.GetAxis("Vertical") * movementSpeed;
+        float sideSpeed = Input.GetAxis("Horizontal") * movementSpeed;
+
+       // verticalVelocity += Physics.gravity.y * Time.deltaTime;
+
+        Vector3 speed = new Vector3(sideSpeed, 0, forwardSpeed);
+
+        speed = transform.rotation * speed;
+        Debug.Log("Speed is " + speed + "   " + forwardSpeed + "    " + sideSpeed);
+        //characterController.Move(speed * Time.deltaTime);
+        characterController.transform.position += (speed * Time.deltaTime);
     }
 }
