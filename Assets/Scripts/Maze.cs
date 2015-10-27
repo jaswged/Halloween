@@ -29,7 +29,7 @@ public class Maze : MonoBehaviour {
 		DoFirstGenerationStep(activeCells);
 
 		while(activeCells.Count > 0){
-			yield return delay;
+            yield return null; // delay;
 			DoNextGenerationStep(activeCells);
 		}
         float timeItTook = Time.time - begginningTime;
