@@ -49,7 +49,6 @@ public class Player : MonoBehaviour {
         #region Rotation
         float rotLeftRight = Input.GetAxis("Mouse X") * mouseSensitivity;
         transform.Rotate(0, rotLeftRight, 0);
-
         //verticalRotation -= Input.GetAxis("Mouse Y") * mouseSensitivity;
        // verticalRotation = Mathf.Clamp(verticalRotation, -upDownRange, upDownRange);
        // Camera.main.transform.localRotation = Quaternion.Euler(verticalRotation, 0, 0);
@@ -62,16 +61,7 @@ public class Player : MonoBehaviour {
         float sideSpeed = Input.GetAxis("Horizontal") * movementSpeed;
 
         verticalVelocity += Physics.gravity.y * Time.deltaTime;
-
-        if (characterController.isGrounded) {
-            /*if (Input.GetButtonDown("Jump")) {
-                verticalVelocity = jumpSpeed;
-            }*/
-        }
-        else {
-            forwardSpeed *= inAirRatio;
-            sideSpeed *= inAirRatio;
-        }
+    
         Vector3 speed = new Vector3(sideSpeed, verticalVelocity, forwardSpeed);
 
         speed = transform.rotation * speed;

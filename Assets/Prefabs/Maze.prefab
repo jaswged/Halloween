@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &458764
 Transform:
@@ -45,7 +45,8 @@ MonoBehaviour:
   cellPrefab: {fileID: 11428766, guid: 5163325bcc27a446bb40407eaf9e5fcd, type: 2}
   passagePrefab: {fileID: 11490930, guid: 6bf384bd15fab44d7b24a419cc607aeb, type: 2}
   wallPrefab: {fileID: 11414554, guid: 6310daa5bda2d45f2a0d861fc3197845, type: 2}
-  generateStepDelay: .00100000005
+  pumpkinPrefab: {fileID: 142570, guid: 9797522e1f5134d4b83b07bd6f70bf29, type: 2}
+  generateStepDelay: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -78,7 +79,7 @@ Prefab:
         type: 2}
     - target: {fileID: 0}
       propertyPath: generateStepDelay
-      value: .00100000005
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: size.X
@@ -87,6 +88,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: size.Z
       value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: pumpkinPrefab
+      value: 
+      objectReference: {fileID: 142570, guid: 9797522e1f5134d4b83b07bd6f70bf29, type: 2}
+    - target: {fileID: 0}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
