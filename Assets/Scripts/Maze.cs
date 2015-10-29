@@ -10,7 +10,6 @@ public class Maze : MonoBehaviour {
     public MazePassage passagePrefab;
     public MazeWall wallPrefab;
 	private MazeCell[,] cells;
-    public GameObject pumpkinPrefab;
 
 	public float generateStepDelay = .001f;
 
@@ -101,15 +100,23 @@ public class Maze : MonoBehaviour {
 	}
 
     public void AddPumpkins(short numPumpkins) {
-        for (int i = 0; i < numPumpkins; i++) {
-            int x = Random.Range(0, size.X);
-            int z = Random.Range(0, size.Z);
-            MazeCell currentCell = cells[x, z];
-            Debug.Log("Adding a pumpkin in cell " + x + "," + z);
-            //activeCells[Random.Range(0, activeCells.Count - 1)];
-            Instantiate(pumpkinPrefab, currentCell.transform.position, gameObject.transform.rotation);
+        for (int i = 0; i < numPumpkins; i++) {            
+            GameObject pumpkin = GameManager.manager.GetPumpkin();
+            SpawnPumpkin(pumpkin);
         }
     }
 
+    public void SpawnPumpkin(GameObject pumpkin) {
+        //activeCells[Random.Range(0, activeCells.Count - 1)];
+        int x = Random.Range(0, size.X);
+        int z = Random.Range(0, size.Z);
+        MazeCell currentCell = cells[x, z];
+        Debug.Log("Adding a pumpkin in cell " + x + "," + z);
+
+        pumpkin.transform.position = currentCell.transform.position;
+        pumpkin.transform.rotation = gameObject.transform.rotation;
+        pumpkin.SetActive(true);
+        //Instantiate(pumpkinPrefab, currentCell.transform.position, gameObject.transform.rotation);
+    }
     public IntVector2 RandomCoordinates{get{return new IntVector2(Random.Range(0,size.X), Random.Range(0,size.Z));}}
 }

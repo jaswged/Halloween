@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using System;
 
 public class GameManager : MonoBehaviour {
     public static GameManager manager;
+    private bool isLevelOver;
 
     public Maze mazePrefab;
 	private Maze mazeInstance;
@@ -11,25 +13,46 @@ public class GameManager : MonoBehaviour {
     public Player playerPrefab;
     private Player playerInstance;
 
-    public float timer = 180; // 3 mins
+    public float timer = 120; // 2 mins
     private float oldTimer;
     private bool isLevelFinished = false;
 
     public UnityEngine.UI.Text timerText;
     public UnityEngine.UI.Text pumpkinText;
+    public Texture levelLoadingTexture;
     private bool isGeneratingMaze;
 
+    public GameObject pumpkinPrefab;
     public int PumpkinCount {get;set;}
-    public short maxPumpkins = 3;
-	#warning need to refactor this name
+    public short maxPumpkins = 7;
+    List<GameObject> pumpkins;    
 
-    void Awake() { manager = this; }
+    void Awake() { manager = this;}
 
     void Start () {
         oldTimer = timer;
 		StartCoroutine(BeginGame());
         isGeneratingMaze = true;
-        //PumpkinCount = maxPumpkins;
+
+        pumpkins = new List<GameObject>();
+        for (int i = 0; i < maxPumpkins; i++) {
+            GameObject pumpkin = (GameObject) Instantiate(pumpkinPrefab);
+            pumpkin.SetActive(false);
+            pumpkins.Add(pumpkin);
+        }
+    }
+
+    internal GameObject GetPumpkin() {
+    for(int i = 0;i< pumpkins.Count;i++) {
+           if(!pumpkins[i].activeInHierarchy) {
+                return pumpkins[i];
+            }
+        }
+        Debug.Log("Pumpkin list is growing. This should not happen.");
+        GameObject pumpkin = (GameObject)Instantiate(pumpkinPrefab);
+        pumpkin.SetActive(false);
+        pumpkins.Add(pumpkin);
+        return pumpkin;
     }
 	
 	void Update () {
@@ -40,12 +63,14 @@ public class GameManager : MonoBehaviour {
         DisplayTimer();
         pumpkinText.text = "Pumpkins Found: " + PumpkinCount;
 
-        if (Input.GetKeyDown(KeyCode.Space)){
+       /* if (Input.GetKeyDown(KeyCode.Space)){
 			RestartGame();
-		}
+		}*/
 	}
 
 	private IEnumerator BeginGame(){
+        isLevelOver = false;
+        isGeneratingMaze = true;
         Camera.main.clearFlags = CameraClearFlags.Skybox;
         Camera.main.rect = new Rect(0f, 0f, 1f, 1f);
 		mazeInstance = Instantiate(mazePrefab) as Maze;
@@ -58,14 +83,19 @@ public class GameManager : MonoBehaviour {
         Camera.main.clearFlags = CameraClearFlags.Depth;
         Camera.main.rect = new Rect(0f, 0f, .5f, .5f);
         ResetTimer();
+        PumpkinCount = 0;
         isGeneratingMaze = false;
-
-
     }
 
-	private void RestartGame(){
+    internal void PumpkinFound(PumpkinTrigger pumpkinTrigger) {
+        PumpkinCount++;
+        Debug.Log(pumpkinTrigger.gameObject.name);
+        mazeInstance.SpawnPumpkin(pumpkinTrigger.gameObject);
+        //throw new NotImplementedException("pumpkin trigger not finished yet");
+    }
+
+    private void RestartGame(){
 		StopAllCoroutines();
-        isGeneratingMaze = true;
         Destroy (mazeInstance.gameObject);
         if(playerInstance != null) {
             Destroy(playerInstance.gameObject);
@@ -91,15 +121,47 @@ public class GameManager : MonoBehaviour {
             timerText.text = minsDisplay + " : " + secsDisplay;
         }
         else {
-            ResetTimer();
+            isLevelOver = true;
         }
     }
 
     private void ResetTimer() {timer = oldTimer; }
 
     void OnGUI() {
-        if (isGeneratingMaze) return;
+        if (isGeneratingMaze) {
+            GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), levelLoadingTexture);
+        }
+        if(isLevelOver) {
+            GUI.color = Color.white;
+            //GUI.Box(new Rect(0, 0, Screen.width, Screen.height), "");
+            //GUI.Box(new Rect(0, 0, Screen.width, Screen.height), "");
+            //GUI.Box(new Rect(0, 0, Screen.width, Screen.height), "");
+            //GUI.Box(new Rect(0, 0, Screen.width, Screen.height), "");
+            //GUI.Box(new Rect(0, 0, Screen.width, Screen.height), "");
+            //GUI.Box(new Rect(0, 0, Screen.width, Screen.height), "");
+            //GUI.Box(new Rect(0, 0, Screen.width, Screen.height), "");
+            //GUI.Box(new Rect(0, 0, Screen.width, Screen.height), "");
+            //GUI.Box(new Rect(0, 0, Screen.width, Screen.height), "");
+            GUI.Box(new Rect(0, 0, Screen.width, Screen.height), "");
+            GUI.Box(new Rect(0, 0, Screen.width, Screen.height), "");
+            GUI.Box(new Rect(0, 0, Screen.width, Screen.height), "");
 
-        // Show maze generating image/texture here like the blood overlay.
+            GUILayout.BeginArea(new Rect((Screen.width - 300) / 2, (Screen.height - 200) / 2, 500, 400));
+
+            GUILayout.Label("Congratulations!");
+            GUILayout.Label("You Found: " + PumpkinCount.ToString() + " pumpkins!");
+
+            if (GUILayout.Button("See if this works!")) {
+                RestartGame();
+            }
+
+            if (GUILayout.Button("Play Again")) {
+                //Cursor.lockState = CursorLockMode.None;
+                Screen.lockCursor = false;
+                Application.LoadLevel(Application.loadedLevel);
+            }
+
+            GUILayout.EndArea();
+        }        
     }
 }

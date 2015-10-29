@@ -12,8 +12,6 @@ public class FootSteps : MonoBehaviour {
     public float minPitch = 0.7f;
     public float maxPitch = 1.3f;
 
-    private bool levelOver = false;
-
     void Awake () {
         controller = GetComponent<CharacterController>();
         canStep = true;
@@ -21,7 +19,7 @@ public class FootSteps : MonoBehaviour {
     }
 
     private void Update() {
-    if (controller.isGrounded && canStep && controller.velocity.magnitude > 0) {
+        if (controller.isGrounded && canStep && controller.velocity.magnitude > 0.5f) {
             StartCoroutine(WalkSound()); 
         } 
     }
@@ -32,7 +30,7 @@ public class FootSteps : MonoBehaviour {
         audioSource.volume = walkVolume;
         audioSource.pitch = Random.Range(minPitch, maxPitch);
         audioSource.Play();
-        yield return new WaitForSeconds(0.45f);
+        yield return new WaitForSeconds(0.5f);
 	    canStep = true;
     }
 
