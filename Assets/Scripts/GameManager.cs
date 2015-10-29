@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour {
         oldTimer = timer;
 		StartCoroutine(BeginGame());
         isGeneratingMaze = true;
-        PumpkinCount = maxPumpkins;
+        //PumpkinCount = maxPumpkins;
     }
 	
 	void Update () {
@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour {
         }
 
         DisplayTimer();
-        pumpkinText.text = "Pumpkins Remaining: " + PumpkinCount;
+        pumpkinText.text = "Pumpkins Found: " + PumpkinCount;
 
         if (Input.GetKeyDown(KeyCode.Space)){
 			RestartGame();
