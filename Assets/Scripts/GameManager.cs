@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour {
     public Player playerPrefab;
     private Player playerInstance;
 
-    private float timer = 70;
+    public float timer = 180; // 3 mins
     private float oldTimer;
     private bool isLevelFinished = false;
 
@@ -19,8 +19,9 @@ public class GameManager : MonoBehaviour {
     public UnityEngine.UI.Text pumpkinText;
     private bool isGeneratingMaze;
 
-    public int PumpkinCount { get; set; }
+    public int PumpkinCount {get;set;}
     public short maxPumpkins = 3;
+	#warning need to refactor this name
 
     void Awake() { manager = this; }
 
