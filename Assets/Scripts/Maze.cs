@@ -18,31 +18,30 @@ public class Maze : MonoBehaviour {
 	}
 
 	public IEnumerator Generate(){
-		WaitForSeconds delay = new WaitForSeconds(generateStepDelay);
-		Debug.Log("Generating the maze");
-        float begginningTime = Time.time;
+		//WaitForSeconds delay = new WaitForSeconds(generateStepDelay);
+		//Debug.Log("Generating the maze");
+        float beginningTime = Time.time;
 
         cells = new MazeCell[size.X,size.Z];
 
 		List<MazeCell> activeCells = new List<MazeCell>();
-		DoFirstGenerationStep(activeCells);
+        activeCells.Add(CreateCell(RandomCoordinates));
 
 		while(activeCells.Count > 0){
             yield return null; // delay;
-			DoNextGenerationStep(activeCells);
+			GenerationStep(activeCells);
 		}
-        float timeItTook = Time.time - begginningTime;
+        float timeItTook = Time.time - beginningTime;
         Debug.Log("Maze is completed! It took " + timeItTook + " seconds.");
 	}
 
-	private void DoFirstGenerationStep(List<MazeCell> activeCells){
-		activeCells.Add(CreateCell(RandomCoordinates));
-	}
-
-	private void DoNextGenerationStep(List<MazeCell> activeCells){
+	private void GenerationStep(List<MazeCell> activeCells){
 		int currentIndex = activeCells.Count - 1;
-// Different ways of getting CurrentIndex change how the maze looks.
-		MazeCell currentCell = activeCells[currentIndex];
+        //currentIndex = 0;
+        //currentIndex = Random.Range(0, activeCells.Count - 1);
+        // Different ways of getting CurrentIndex change how the maze looks.
+        
+        MazeCell currentCell = activeCells[currentIndex];
 
         if( currentCell.IsFullyInitialized) {
             activeCells.RemoveAt(currentIndex);
@@ -111,7 +110,7 @@ public class Maze : MonoBehaviour {
         int x = Random.Range(0, size.X);
         int z = Random.Range(0, size.Z);
         MazeCell currentCell = cells[x, z];
-        Debug.Log("Adding a pumpkin in cell " + x + "," + z);
+       // Debug.Log("Adding a pumpkin in cell " + x + "," + z);
 
         pumpkin.transform.position = currentCell.transform.position;
         pumpkin.transform.rotation = gameObject.transform.rotation;

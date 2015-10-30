@@ -24,13 +24,13 @@ public class MazeCell : MonoBehaviour {
 
     public MazeDirection RandomUninitializedDirection {
         get {
-            int skips = Random.Range(0, MazeDirections.COUNT - initializedEdgeCount);
+            int randomEdgeInt = Random.Range(0, MazeDirections.COUNT - initializedEdgeCount);
             for (int i = 0; i < MazeDirections.COUNT; i++) {
                 if (edges[i] == null) {
-                    if (skips == 0) {
+                    if (randomEdgeInt == 0) {
                         return (MazeDirection)i;
                     }
-                    skips -= 1;
+                    randomEdgeInt -= 1;
                 }
             }
         throw new System.InvalidOperationException("MazeCell has no uninitialized directions left.");

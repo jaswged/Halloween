@@ -4,6 +4,8 @@ public class Player : MonoBehaviour {
     private MazeCell currentCell;
     private MazeDirection currentDirection;
 
+    public static Player player;
+
     /*CharacterController characterController;
     public float mouseSensitivity = 4.0f;
     public float movementSpeed = 6.0f;*/
@@ -26,6 +28,11 @@ public class Player : MonoBehaviour {
 
     void Awake() {
         characterController = GetComponent<CharacterController>();
+        player = this;
+    }
+
+    public void disableController() {
+// Might delete
     }
 
     public void SetLocation(MazeCell cell) {

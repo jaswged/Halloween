@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour {
     private Player playerInstance;
 
     public float timer = 120; // 2 mins
-    private float oldTimer;
+    public float oldTimer = 120;
     private bool isLevelFinished = false;
 
     public UnityEngine.UI.Text timerText;
@@ -27,7 +27,9 @@ public class GameManager : MonoBehaviour {
     public short maxPumpkins = 7;
     List<GameObject> pumpkins;    
 
-    void Awake() { manager = this;}
+    void Awake() { 
+        manager = this;
+    }
 
     void Start () {
         oldTimer = timer;
@@ -56,13 +58,12 @@ public class GameManager : MonoBehaviour {
     }
 	
 	void Update () {
-        if (!isLevelFinished) {
+        if (!isLevelOver) {
             timer -= Time.deltaTime;
         }
 
         DisplayTimer();
         pumpkinText.text = "Pumpkins Found: " + PumpkinCount;
-
        /* if (Input.GetKeyDown(KeyCode.Space)){
 			RestartGame();
 		}*/
@@ -70,6 +71,7 @@ public class GameManager : MonoBehaviour {
 
 	private IEnumerator BeginGame(){
         isLevelOver = false;
+        Camera.main.GetComponent<AudioListener>().enabled = true;
         isGeneratingMaze = true;
         Camera.main.clearFlags = CameraClearFlags.Skybox;
         Camera.main.rect = new Rect(0f, 0f, 1f, 1f);
@@ -82,6 +84,7 @@ public class GameManager : MonoBehaviour {
         playerInstance.SetLocation(mazeInstance.GetCell(mazeInstance.RandomCoordinates));
         Camera.main.clearFlags = CameraClearFlags.Depth;
         Camera.main.rect = new Rect(0f, 0f, .5f, .5f);
+        Camera.main.GetComponent<AudioListener>().enabled = false;
         ResetTimer();
         PumpkinCount = 0;
         isGeneratingMaze = false;
@@ -91,11 +94,11 @@ public class GameManager : MonoBehaviour {
         PumpkinCount++;
         Debug.Log(pumpkinTrigger.gameObject.name);
         mazeInstance.SpawnPumpkin(pumpkinTrigger.gameObject);
-        //throw new NotImplementedException("pumpkin trigger not finished yet");
     }
 
     private void RestartGame(){
 		StopAllCoroutines();
+        DisablePumpkins();
         Destroy (mazeInstance.gameObject);
         if(playerInstance != null) {
             Destroy(playerInstance.gameObject);
@@ -103,13 +106,19 @@ public class GameManager : MonoBehaviour {
         StartCoroutine(BeginGame());
 	}
 
+    private void DisablePumpkins() {
+        foreach(GameObject obj in pumpkins) {
+            obj.SetActive(false);
+        }
+    }
+
     private void DisplayTimer() {
         if (timer > 0) {
             String minsDisplay  = ((int)(timer / 60)).ToString();
             String secsDisplay = ((int)timer).ToString();
 
             int mins = (int)timer / 60;
-            int secs = (int) timer;
+            //int secs = (int) timer;
 
             if((timer - mins * 60) > 10) {
                  secsDisplay = ((int)timer - (mins * 60)).ToString();
@@ -120,8 +129,11 @@ public class GameManager : MonoBehaviour {
 
             timerText.text = minsDisplay + " : " + secsDisplay;
         }
-        else {
+        else if(!isLevelOver) {
+            Debug.LogError("Level is over Now");
             isLevelOver = true;
+            //Time.timeScale = 0;
+            //Player.player.
         }
     }
 
@@ -151,15 +163,20 @@ public class GameManager : MonoBehaviour {
             GUILayout.Label("Congratulations!");
             GUILayout.Label("You Found: " + PumpkinCount.ToString() + " pumpkins!");
 
-            if (GUILayout.Button("See if this works!")) {
+            if (GUILayout.Button("Try Again!")) {
+                Debug.Log("Level is over = false");
+                ResetTimer();
+                isLevelOver = false;
+                // Time.timeScale = 1;
                 RestartGame();
             }
 
-            if (GUILayout.Button("Play Again")) {
-                //Cursor.lockState = CursorLockMode.None;
-                Screen.lockCursor = false;
-                Application.LoadLevel(Application.loadedLevel);
-            }
+            //if (GUILayout.Button("Play Again")) {
+            //    //Cursor.lockState = CursorLockMode.None;
+            //    Screen.lockCursor = false;
+            //    isLevelOver = false;
+            //    Application.LoadLevel(Application.loadedLevel);
+            //}
 
             GUILayout.EndArea();
         }        
