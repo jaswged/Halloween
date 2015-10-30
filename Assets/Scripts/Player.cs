@@ -88,7 +88,7 @@ public class Player : MonoBehaviour {
 
     public IEnumerator IncreaseMovementSpeedTemporarily() {
         Debug.Log("Run faster for 10 seconds");
-        movementSpeed *= 20;
+        movementSpeed *= 10;
         yield return new WaitForSeconds(10);
         movementSpeed = baseMovementSpeed;
     }
