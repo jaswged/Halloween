@@ -92,7 +92,6 @@ public class GameManager : MonoBehaviour {
 
     internal void PumpkinFound(PumpkinTrigger pumpkinTrigger) {
         PumpkinCount++;
-        Debug.Log(pumpkinTrigger.gameObject.name);
         mazeInstance.SpawnPumpkin(pumpkinTrigger.gameObject);
     }
 
@@ -107,9 +106,10 @@ public class GameManager : MonoBehaviour {
 	}
 
     private void DisablePumpkins() {
-        foreach(GameObject obj in pumpkins) {
-            obj.SetActive(false);
-        }
+        //foreach(GameObject obj in pumpkins) {
+        //    obj.SetActive(false);
+        //}
+        pumpkins.ForEach(p => p.SetActive(false)); 
     }
 
     private void DisplayTimer() {
@@ -130,10 +130,9 @@ public class GameManager : MonoBehaviour {
             timerText.text = minsDisplay + " : " + secsDisplay;
         }
         else if(!isLevelOver) {
-            Debug.LogError("Level is over Now");
             isLevelOver = true;
-            //Time.timeScale = 0;
-            //Player.player.
+            Time.timeScale = 0;
+            //TODO Player.player. freeze if ^ doesn't stop player
         }
     }
 
@@ -141,7 +140,7 @@ public class GameManager : MonoBehaviour {
 
     void OnGUI() {
         if (isGeneratingMaze) {
-            GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), levelLoadingTexture);
+            //GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), levelLoadingTexture);
         }
         if(isLevelOver) {
             GUI.color = Color.white;
@@ -161,13 +160,12 @@ public class GameManager : MonoBehaviour {
             GUILayout.BeginArea(new Rect((Screen.width - 300) / 2, (Screen.height - 200) / 2, 500, 400));
 
             GUILayout.Label("Congratulations!");
-            GUILayout.Label("You Found: " + PumpkinCount.ToString() + " pumpkins!");
+            GUILayout.Label("You Found " + PumpkinCount.ToString() + " pumpkins!");
 
-            if (GUILayout.Button("Try Again!")) {
-                Debug.Log("Level is over = false");
+            if (GUILayout.Button("Play Again!")) {
                 ResetTimer();
                 isLevelOver = false;
-                // Time.timeScale = 1;
+                Time.timeScale = 1;
                 RestartGame();
             }
 

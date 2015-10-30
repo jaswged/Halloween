@@ -42,6 +42,7 @@ GameObject:
   - 4: {fileID: 492144}
   - 33: {fileID: 3320318}
   - 23: {fileID: 2319044}
+  - 114: {fileID: 11419298}
   m_Layer: 0
   m_Name: Sphere_MeshPart0
   m_TagString: Untagged
@@ -102,7 +103,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 142570}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.48459053, y: -6.27782917, z: 4.52741718}
+  m_LocalPosition: {x: 7.73023987, y: -.600567639, z: 1.00635624}
   m_LocalScale: {x: .180000007, y: .180000007, z: .180000007}
   m_Children:
   - {fileID: 408668}
@@ -252,6 +253,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2, y: 2, z: 2}
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &11419298
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 121658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0494828057e11344d9d6f27cbc408ce7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  greenPumpkinMaterial: {fileID: 2100000, guid: 9364b03386303e24a889af5858ce5a09,
+    type: 2}
+  yellowPumpkinMaterial: {fileID: 2100000, guid: be86b1c49a6a55b4e8780b087f253061,
+    type: 2}
 --- !u!114 &11472290
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -263,6 +279,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6dfccde9d95af1f479c33490c6a81d45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  greenPumpkin: {fileID: 2100000, guid: 9364b03386303e24a889af5858ce5a09, type: 2}
+  isSpeedPumpkin: 0
+  isTimePumpkin: 0
+  timeAddedFromPumpkin: 15
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -290,6 +310,10 @@ Prefab:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: greenPumpkin
+      value: 
+      objectReference: {fileID: 2100000, guid: 9364b03386303e24a889af5858ce5a09, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 142570}

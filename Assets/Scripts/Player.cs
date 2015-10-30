@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using UnityEngine;
 
 public class Player : MonoBehaviour {
@@ -14,7 +16,8 @@ public class Player : MonoBehaviour {
     // float verticalVelocity = 0;
 
     #region toDelete
-    public float movementSpeed = 6.0f;
+    public float movementSpeed = 1.2f;// 6
+    public float baseMovementSpeed = 1.2f;
     public float mouseSensitivity = 4.0f;
     public float jumpSpeed = 3.0f;
     public float upDownRange = 60.0f;
@@ -52,6 +55,12 @@ public class Player : MonoBehaviour {
         }
     }
 
+    internal void RunFaster() {
+        Debug.LogWarning("In runFaster calling coroutine");
+        // This needs some working out for if two times are in a row. isRunningFaster = true;
+        StartCoroutine(IncreaseMovementSpeedTemporarily());
+    }
+
     void Update() {
         #region Rotation
         float rotLeftRight = Input.GetAxis("Mouse X") * mouseSensitivity;
@@ -77,6 +86,13 @@ public class Player : MonoBehaviour {
         #endregion
     }
 
+    public IEnumerator IncreaseMovementSpeedTemporarily() {
+        Debug.Log("Run faster for 10 seconds");
+        movementSpeed *= 20;
+        yield return new WaitForSeconds(10);
+        movementSpeed = baseMovementSpeed;
+    }
+
     /*void Update() {
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) {
             Move(currentDirection);
@@ -96,19 +112,19 @@ public class Player : MonoBehaviour {
         else if (Input.GetKeyDown(KeyCode.E)) {
             Rotate(currentDirection.GetNextClockwise()); // was Look()
         }*/
-   /* float rotLeftRight = Input.GetAxis("Mouse X") * mouseSensitivity;
-        transform.Rotate(0, rotLeftRight, 0);
+    /* float rotLeftRight = Input.GetAxis("Mouse X") * mouseSensitivity;
+         transform.Rotate(0, rotLeftRight, 0);
 
-        float forwardSpeed = Input.GetAxis("Vertical") * movementSpeed;
-        float sideSpeed = Input.GetAxis("Horizontal") * movementSpeed;
-        Debug.Log("Horizontal is " + Input.GetAxis("Horizontal"));
-       // verticalVelocity += Physics.gravity.y * Time.deltaTime;
+         float forwardSpeed = Input.GetAxis("Vertical") * movementSpeed;
+         float sideSpeed = Input.GetAxis("Horizontal") * movementSpeed;
+         Debug.Log("Horizontal is " + Input.GetAxis("Horizontal"));
+        // verticalVelocity += Physics.gravity.y * Time.deltaTime;
 
-        Vector3 speed = new Vector3(sideSpeed, 0, forwardSpeed);
+         Vector3 speed = new Vector3(sideSpeed, 0, forwardSpeed);
 
-        speed = transform.rotation * speed * Time.deltaTime;
-        //Debug.Log("Speed is " + speed + "   " + forwardSpeed + "    " + sideSpeed);
-        //characterController.Move(speed * Time.deltaTime);
-        characterController.transform.Translate(speed);
-    }*/
+         speed = transform.rotation * speed * Time.deltaTime;
+         //Debug.Log("Speed is " + speed + "   " + forwardSpeed + "    " + sideSpeed);
+         //characterController.Move(speed * Time.deltaTime);
+         characterController.transform.Translate(speed);
+     }*/
 }
