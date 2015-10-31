@@ -21,7 +21,6 @@ public class PumpkinTrigger : MonoBehaviour {
         // change stats
         if (i < 3) {
             isSpeedPumpkin = true;
-            Debug.Log("Speed pumpkin spawned");
             pumpkinRenderer.ChangeColor(PumpkinRender.PumpkinColors.GreenPumpkin);
             this.gameObject.name = "SPEED Pumpkin";
         }
@@ -29,7 +28,6 @@ public class PumpkinTrigger : MonoBehaviour {
             isTimePumpkin = true;
             // Todo change this to regular material
             pumpkinRenderer.ChangeColor(PumpkinRender.PumpkinColors.GreenPumpkin);
-            Debug.Log("Time pumpkin spawned");
             this.gameObject.name = "TIME Pumpkin";
         }
         else {

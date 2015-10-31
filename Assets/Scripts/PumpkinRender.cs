@@ -6,26 +6,25 @@ public class PumpkinRender : MonoBehaviour {
     public Material yellowPumpkinMaterial;
     private Material defaultPumpkinMaterial;
 
-    private Renderer pumpkinRenderer;
+    //private Renderer pumpkinRenderer;
     private MeshRenderer pumpkinMeshRenderer;
 
     void Awake() {
-        pumpkinRenderer = GetComponent<Renderer>();
-        defaultPumpkinMaterial = pumpkinRenderer.material;
+        //pumpkinRenderer = GetComponent<Renderer>();
         pumpkinMeshRenderer = GetComponent<MeshRenderer>();
+        //defaultPumpkinMaterial = pumpkinRenderer.material;
     }
 
     public void ResetRenderer() {
-        pumpkinRenderer.material = defaultPumpkinMaterial;
+        //pumpkinRenderer.material = defaultPumpkinMaterial;
     }
 
     public void ChangeColor(PumpkinColors color) {
-        if(pumpkinRenderer == null) {
+        /*if(pumpkinRenderer == null) {
            Debug.LogWarning("renderer is null nothing will happen");
-            
-        }
+        }*/
         if (pumpkinMeshRenderer == null) {
-            Debug.LogWarning("Mesh renderer is null nothing will happen");
+            Debug.LogWarning("Mesh renderer is null nothing will happen! " + color);
         }/*
         if (color == PumpkinColors.GreenPumpkin) {
         Debug.Log("Changing the color to green: " + color);

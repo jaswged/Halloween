@@ -56,8 +56,6 @@ public class Player : MonoBehaviour {
     }
 
     internal void RunFaster() {
-        Debug.LogWarning("In runFaster calling coroutine");
-        // This needs some working out for if two times are in a row. isRunningFaster = true;
         StartCoroutine(IncreaseMovementSpeedTemporarily());
     }
 
@@ -88,7 +86,7 @@ public class Player : MonoBehaviour {
 
     public IEnumerator IncreaseMovementSpeedTemporarily() {
         Debug.Log("Run faster for 10 seconds");
-        movementSpeed *= 10;
+        movementSpeed *= 2;
         yield return new WaitForSeconds(10);
         movementSpeed = baseMovementSpeed;
     }
