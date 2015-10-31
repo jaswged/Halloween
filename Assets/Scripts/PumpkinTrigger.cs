@@ -54,7 +54,6 @@ public class PumpkinTrigger : MonoBehaviour {
                 Debug.Log("Was a Time pumpkin. Additional time");
             }
             GameManager.manager.PumpkinFound(this, isSpeedPumpkin || isTimePumpkin, isRarePumpkin);
-            //Destroy(gameObject);
         }
     }
 }

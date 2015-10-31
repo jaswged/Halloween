@@ -10,8 +10,8 @@ PlayerSettings:
   targetResolution: 0
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: DefaultCompany
-  productName: Halloween Testing
+  companyName: Galactic Insight
+  productName: A-Maize-ing Maze
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_ShowUnitySplashScreen: 1
@@ -164,7 +164,7 @@ PlayerSettings:
   - m_BuildTarget: 
     m_Icons:
     - serializedVersion: 2
-      m_Icon: {fileID: 0}
+      m_Icon: {fileID: 2800000, guid: e4de9ec1ad40fea439da4f49e3e84b8c, type: 3}
       m_Width: 128
       m_Height: 128
   m_BuildTargetBatching: []
@@ -459,8 +459,8 @@ PlayerSettings:
   WP8::ScriptingBackend: 2
   WebGL::ScriptingBackend: 1
   WebGL::audioCompressionFormat: 4
-  WebGL::exceptionSupport: 1
-  WebGL::memorySize: 256
+  WebGL::exceptionSupport: 0
+  WebGL::memorySize: 384
   iOS::Architecture: 2
   iOS::EnableIncrementalBuildSupportForIl2cpp: 0
   iOS::ScriptingBackend: 1

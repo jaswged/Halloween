@@ -113,15 +113,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd7d084eec099461db27935b73023922, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pumpkinPickupAudioClip: {fileID: 8300000, guid: 04e6ef78c5093a349bdab43c20522323,
+    type: 3}
   mazePrefab: {fileID: 11404684, guid: c1099bb9f5208442481615240c909c30, type: 2}
   playerPrefab: {fileID: 11498234, guid: 0e4b1588cfa663f4dae3ea14cfc84860, type: 2}
-  timer: 30
-  oldTimer: 30
+  timer: 60
+  oldTimer: 60
   timerText: {fileID: 1556417587}
   pumpkinText: {fileID: 1358734673}
   levelLoadingTexture: {fileID: 2800000, guid: fc872ac294ff3c341a09e3eabe9d0e0e, type: 3}
+  fontSize: 22
   pumpkinPrefab: {fileID: 145318, guid: de9079e1bf1dab044bd56bf04361866c, type: 2}
-  maxPumpkins: 8
+  maxPumpkins: 10
 --- !u!4 &960192246
 Transform:
   m_ObjectHideFlags: 0
@@ -145,7 +148,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: d051821d6b25fb34d851bd0c2c601d43, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: .790000021
+  m_Volume: .899999976
   m_Pitch: 1
   Loop: 1
   Mute: 0

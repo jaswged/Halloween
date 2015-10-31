@@ -21,7 +21,7 @@ public class Player : MonoBehaviour {
     #region toDelete
     public float movementSpeed = 1.2f;// 6
     public float baseMovementSpeed = 1.2f;
-    public float mouseSensitivity = 4.0f;
+    public float mouseSensitivity = 6.0f;
 
     CharacterController characterController;
     float verticalVelocity = 0;
@@ -32,8 +32,9 @@ public class Player : MonoBehaviour {
         player = this;
     }
 
-    public void disableController() {
-// Might delete
+    void OnEnable() {
+        Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.;
     }
 
     public void SetLocation(MazeCell cell) {
@@ -69,7 +70,7 @@ public class Player : MonoBehaviour {
         }
 
         #region Rotation
-        float rotLeftRight = Input.GetAxis("Mouse X") * mouseSensitivity;
+        float rotLeftRight = Input.GetAxis("Mouse X") * mouseSensitivity;// * Time.deltaTime;
         transform.Rotate(0, rotLeftRight, 0);
         //verticalRotation -= Input.GetAxis("Mouse Y") * mouseSensitivity;
        // verticalRotation = Mathf.Clamp(verticalRotation, -upDownRange, upDownRange);

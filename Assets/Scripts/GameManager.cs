@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour {
     public static GameManager manager;
     private bool isLevelOver;
 
+    public AudioClip pumpkinPickupAudioClip;
+
     public Maze mazePrefab;
 	private Maze mazeInstance;
 
@@ -21,6 +23,7 @@ public class GameManager : MonoBehaviour {
     Canvas canvas;
     public Texture levelLoadingTexture;
     private bool isGeneratingMaze;
+    public int fontSize = 20;
 
     public GameObject pumpkinPrefab;
     public int PumpkinCount {get;set;}
@@ -93,6 +96,8 @@ public class GameManager : MonoBehaviour {
     }
 
     internal void PumpkinFound(PumpkinTrigger pumpkinTrigger, bool isSpecialPumpkin, bool isRare) {
+        AudioSource.PlayClipAtPoint(pumpkinPickupAudioClip, Player.player.transform.position, 3f);
+
         if (!isSpecialPumpkin) {
             PumpkinCount++;
         }
@@ -151,6 +156,9 @@ public class GameManager : MonoBehaviour {
             canvas.enabled = false;
         }
         if(isLevelOver) {
+            Cursor.lockState = CursorLockMode.None;
+
+            GUI.skin.label.fontSize = GUI.skin.button.fontSize = fontSize;
             GUI.color = Color.white;
             //GUI.Box(new Rect(0, 0, Screen.width, Screen.height), "");
             //GUI.Box(new Rect(0, 0, Screen.width, Screen.height), "");

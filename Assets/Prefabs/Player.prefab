@@ -48,7 +48,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 169824}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: .689999998, z: 0}
+  m_LocalPosition: {x: 3.94094229, y: 5.12675381, z: -1.75157118}
   m_LocalScale: {x: .200000003, y: .25, z: .200000003}
   m_Children:
   - {fileID: 443372}
@@ -110,7 +110,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 9364b03386303e24a889af5858ce5a09, type: 2}
+  - {fileID: 2100000, guid: 1d617156308d63d41951657d52e235b5, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -228,8 +228,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   footsteps:
   - {fileID: 8300000, guid: 47131e1dce3112b4ba9ee3c3d804bb80, type: 3}
-  walkVolume: 1
-  minPitch: .800000012
+  walkVolume: .400000006
+  minPitch: .75
   maxPitch: 1
 --- !u!114 &11498234
 MonoBehaviour:
@@ -242,13 +242,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cdfbdf9b0743c2449b8907a25782778, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  runSpeed: 2.4000001
   movementSpeed: 1.20000005
   baseMovementSpeed: 1.20000005
-  mouseSensitivity: 4
-  jumpSpeed: 3
-  upDownRange: 60
-  runSpeedRatioMultiplier: 1
-  inAirRatio: .800000012
+  mouseSensitivity: 3.5
 --- !u!124 &12440832
 Behaviour:
   m_ObjectHideFlags: 1
@@ -387,7 +384,7 @@ Prefab:
       objectReference: {fileID: 8300000, guid: 47131e1dce3112b4ba9ee3c3d804bb80, type: 3}
     - target: {fileID: 0}
       propertyPath: minPitch
-      value: .800000012
+      value: .75
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: maxPitch
@@ -396,6 +393,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Volume
       value: .100000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: walkVolume
+      value: .400000006
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: mouseSensitivity
+      value: 3.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

@@ -8,7 +8,7 @@ public class FootSteps : MonoBehaviour {
     private CharacterController controller;
     private AudioSource audioSource;
 
-    public float walkVolume = 1f;
+    public float walkVolume = .5f;
     public float minPitch = 0.7f;
     public float maxPitch = 1.3f;
 
@@ -19,9 +19,12 @@ public class FootSteps : MonoBehaviour {
     }
 
     private void Update() {
-        if (controller.isGrounded && canStep && controller.velocity.magnitude > 0.5f) {
-            StartCoroutine(WalkSound()); 
-        } 
+        if (controller.isGrounded && canStep && controller.velocity.magnitude > 1.9f) {
+            StartCoroutine(RunSound());
+        }
+        else if(controller.isGrounded && canStep && controller.velocity.magnitude > 0.5f) {
+            StartCoroutine(WalkSound());
+        }
     }
 
     IEnumerator WalkSound() {
@@ -34,9 +37,19 @@ public class FootSteps : MonoBehaviour {
 	    canStep = true;
     }
 
-/** To call this method to stop the footsteps sound.
- *  player.SendMessage("StopFootSteps");
- */  
+    IEnumerator RunSound() {
+        canStep = false;
+        audioSource.clip = footsteps[Random.Range(0, footsteps.Length)];
+        audioSource.volume = walkVolume;// runVolume;
+        audioSource.pitch = Random.Range(minPitch, maxPitch);
+        audioSource.Play();
+        yield return new WaitForSeconds(0.25f);
+        canStep = true;
+    }
+
+    /** To call this method to stop the footsteps sound.
+     *  player.SendMessage("StopFootSteps");
+     */
     public void StopFootSteps() {
         GetComponent<AudioSource>().Stop();
     }
