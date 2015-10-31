@@ -90,8 +90,12 @@ public class GameManager : MonoBehaviour {
         isGeneratingMaze = false;
     }
 
-    internal void PumpkinFound(PumpkinTrigger pumpkinTrigger) {
-        PumpkinCount++;
+    internal void PumpkinFound(PumpkinTrigger pumpkinTrigger, bool isSpecialPumpkin, bool isRare) {
+      if(!isSpecialPumpkin)
+            PumpkinCount++;
+        if(isRare) {
+            PumpkinCount += 2;
+        }
         mazeInstance.SpawnPumpkin(pumpkinTrigger.gameObject);
     }
 

@@ -120,8 +120,8 @@ MonoBehaviour:
   timerText: {fileID: 1556417587}
   pumpkinText: {fileID: 1358734673}
   levelLoadingTexture: {fileID: 2800000, guid: 344e16064c2a54647ac4429484fc8f04, type: 3}
-  pumpkinPrefab: {fileID: 142570, guid: 9797522e1f5134d4b83b07bd6f70bf29, type: 2}
-  maxPumpkins: 7
+  pumpkinPrefab: {fileID: 145318, guid: de9079e1bf1dab044bd56bf04361866c, type: 2}
+  maxPumpkins: 8
 --- !u!4 &960192246
 Transform:
   m_ObjectHideFlags: 0

@@ -3,38 +3,34 @@ using System.Collections;
 
 public class PumpkinRender : MonoBehaviour {
     public Material greenPumpkinMaterial;
-    public Material yellowPumpkinMaterial;
-    private Material defaultPumpkinMaterial;
+    public Material bluePumpkinMaterial;
+    public Material defaultPumpkinMaterial;
+    public Material redPumpkinMaterial;
 
-    //private Renderer pumpkinRenderer;
     private MeshRenderer pumpkinMeshRenderer;
 
-    void Awake() {
-        //pumpkinRenderer = GetComponent<Renderer>();
-        pumpkinMeshRenderer = GetComponent<MeshRenderer>();
-        //defaultPumpkinMaterial = pumpkinRenderer.material;
-    }
-
     public void ResetRenderer() {
-        //pumpkinRenderer.material = defaultPumpkinMaterial;
+        pumpkinMeshRenderer.material = defaultPumpkinMaterial;
     }
 
     public void ChangeColor(PumpkinColors color) {
-        /*if(pumpkinRenderer == null) {
-           Debug.LogWarning("renderer is null nothing will happen");
-        }*/
+        pumpkinMeshRenderer = GetComponent<MeshRenderer>();
         if (pumpkinMeshRenderer == null) {
             Debug.LogWarning("Mesh renderer is null nothing will happen! " + color);
-        }/*
-        if (color == PumpkinColors.GreenPumpkin) {
-        Debug.Log("Changing the color to green: " + color);
-            pumpkinRenderer.material = greenPumpkinMaterial;
         }
-        if (color == PumpkinColors.YellowPumpkin) {
-            Debug.Log("Changing the color to yellow: " + color );
-            pumpkinRenderer.material = greenPumpkinMaterial;
-        }*/
+        if (color == PumpkinColors.GreenPumpkin) {
+            pumpkinMeshRenderer.material = bluePumpkinMaterial;
+        }
+        else if (color == PumpkinColors.BluePumpkin) {
+            pumpkinMeshRenderer.material = greenPumpkinMaterial;
+        }
+        else if (color == PumpkinColors.RedPumpkin) {
+            pumpkinMeshRenderer.material = redPumpkinMaterial;
+        }
+        else {
+            pumpkinMeshRenderer.material = defaultPumpkinMaterial;
+        }
     }
 
-    public enum PumpkinColors { GreenPumpkin, YellowPumpkin  }
+    public enum PumpkinColors { GreenPumpkin, BluePumpkin, Default, RedPumpkin }
 }

@@ -1,38 +1,43 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class PumpkinTrigger : MonoBehaviour {
-    public Material greenPumpkin;
-    private Material defaultMaterial;
+    //public Material greenPumpkin;
+    //private Material defaultMaterial;
 
     public bool isSpeedPumpkin;
     public bool isTimePumpkin;
+    public bool isRarePumpkin;
 
     public float timeAddedFromPumpkin = 15;
 
-    private PumpkinRender pumpkinRenderer;
+    private PumpkinRender[] pumpkinRenderers;
 
     void Awake() {
-        pumpkinRenderer = GetComponentInChildren<PumpkinRender>();
+        pumpkinRenderers = GetComponentsInChildren<PumpkinRender>();
     }
 
     void OnEnable() {
-        int i = Random.Range(0, 14);
+        int i = UnityEngine.Random.Range(0, 20);
         // change stats
-        if (i < 3) {
+        if (i < 5) {
             isSpeedPumpkin = true;
-            pumpkinRenderer.ChangeColor(PumpkinRender.PumpkinColors.GreenPumpkin);
+            Array.ForEach(pumpkinRenderers, p => p.ChangeColor(PumpkinRender.PumpkinColors.BluePumpkin));
             this.gameObject.name = "SPEED Pumpkin";
         }
-        else if (i < 6) {
+        else if (i < 10) {
             isTimePumpkin = true;
-            // Todo change this to regular material
-            pumpkinRenderer.ChangeColor(PumpkinRender.PumpkinColors.GreenPumpkin);
+            Array.ForEach(pumpkinRenderers, p =>  p.ChangeColor(PumpkinRender.PumpkinColors.GreenPumpkin));
             this.gameObject.name = "TIME Pumpkin";
         }
+        else if(i < 12) {
+            isRarePumpkin = true;
+            Array.ForEach(pumpkinRenderers, p => p.ChangeColor(PumpkinRender.PumpkinColors.RedPumpkin));
+            this.gameObject.name = "RARE_Pumpkin";
+        }
         else {
-            //TODO Call the PumpkinRender.ResetRenderer();
-            //renderer.material = defaultMaterial;
+            Array.ForEach(pumpkinRenderers, p => p.ChangeColor(PumpkinRender.PumpkinColors.Default));
         }
     }
 
@@ -52,7 +57,7 @@ public class PumpkinTrigger : MonoBehaviour {
                 GameManager.manager.timer += timeAddedFromPumpkin;
                 Debug.Log("Was a Time pumpkin. Additional time");
             }
-            GameManager.manager.PumpkinFound(this);
+            GameManager.manager.PumpkinFound(this, isSpeedPumpkin || isTimePumpkin, isRarePumpkin);
             //Destroy(gameObject);
         }
     }
