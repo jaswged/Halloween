@@ -4,6 +4,7 @@ using System.Collections;
 public class MazeCell : MonoBehaviour {
 	public IntVector2 coordinates;
     private int initializedEdgeCount;
+    public bool hasPumpkin;
 
     private MazeCellEdge[] edges = new MazeCellEdge[MazeDirections.COUNT];
     

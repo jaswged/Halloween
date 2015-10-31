@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
     private MazeCell currentCell;
-    private MazeDirection currentDirection;
+    ///private MazeDirection currentDirection;
 
     public static Player player;
 
@@ -15,16 +15,14 @@ public class Player : MonoBehaviour {
     // public float runSpeedRatioMultiplier = 1.6f;
     // float verticalVelocity = 0;
 
+    private float runningTimer = 0;
+    public float runSpeed = 2.4f;
+
     #region toDelete
     public float movementSpeed = 1.2f;// 6
     public float baseMovementSpeed = 1.2f;
     public float mouseSensitivity = 4.0f;
-    public float jumpSpeed = 3.0f;
-    public float upDownRange = 60.0f;
-    public float runSpeedRatioMultiplier = 1.6f;
-    public float inAirRatio = 0.8f;
 
-    float verticalRotation = 0;
     CharacterController characterController;
     float verticalVelocity = 0;
     #endregion
@@ -45,7 +43,7 @@ public class Player : MonoBehaviour {
 
     private void Rotate(MazeDirection direction) {
         transform.localRotation = direction.ToRotation();
-        currentDirection = direction;
+        ///currentDirection = direction;
     }
 
     private void Move(MazeDirection direction) {
@@ -56,10 +54,20 @@ public class Player : MonoBehaviour {
     }
 
     internal void RunFaster() {
-        StartCoroutine(IncreaseMovementSpeedTemporarily());
+        runningTimer += 5;
+    //StartCoroutine(IncreaseMovementSpeedTemporarily());
     }
 
     void Update() {
+        if(runningTimer > 0) {
+            movementSpeed = runSpeed;
+            runningTimer -= Time.deltaTime;
+        }
+        else {
+            runningTimer = 0;
+            movementSpeed = baseMovementSpeed;
+        }
+
         #region Rotation
         float rotLeftRight = Input.GetAxis("Mouse X") * mouseSensitivity;
         transform.Rotate(0, rotLeftRight, 0);

@@ -3,9 +3,9 @@ using System.Collections;
 
 public class BasicMainMenu : MonoBehaviour {
 	// Use this for initialization
-	void Awake () {
-        Screen.lockCursor = false;
-    }
+	//void Awake () {
+ //       Screen.lockCursor = false;
+ //   }
 
     public void StartGame() {
         Application.LoadLevel(1);

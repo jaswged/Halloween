@@ -15,7 +15,6 @@ public class GameManager : MonoBehaviour {
 
     public float timer = 120; // 2 mins
     public float oldTimer = 120;
-    private bool isLevelFinished = false;
 
     public UnityEngine.UI.Text timerText;
     public UnityEngine.UI.Text pumpkinText;
@@ -94,8 +93,9 @@ public class GameManager : MonoBehaviour {
     }
 
     internal void PumpkinFound(PumpkinTrigger pumpkinTrigger, bool isSpecialPumpkin, bool isRare) {
-      if(!isSpecialPumpkin)
+        if (!isSpecialPumpkin) {
             PumpkinCount++;
+        }
         if(isRare) {
             PumpkinCount += 2;
         }

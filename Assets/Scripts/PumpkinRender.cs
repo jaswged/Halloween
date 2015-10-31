@@ -19,10 +19,10 @@ public class PumpkinRender : MonoBehaviour {
             Debug.LogWarning("Mesh renderer is null nothing will happen! " + color);
         }
         if (color == PumpkinColors.GreenPumpkin) {
-            pumpkinMeshRenderer.material = bluePumpkinMaterial;
+            pumpkinMeshRenderer.material = greenPumpkinMaterial;
         }
         else if (color == PumpkinColors.BluePumpkin) {
-            pumpkinMeshRenderer.material = greenPumpkinMaterial;
+            pumpkinMeshRenderer.material = bluePumpkinMaterial;
         }
         else if (color == PumpkinColors.RedPumpkin) {
             pumpkinMeshRenderer.material = redPumpkinMaterial;

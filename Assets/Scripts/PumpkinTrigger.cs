@@ -1,11 +1,7 @@
 ﻿using UnityEngine;
-using System.Collections;
 using System;
 
 public class PumpkinTrigger : MonoBehaviour {
-    //public Material greenPumpkin;
-    //private Material defaultMaterial;
-
     public bool isSpeedPumpkin;
     public bool isTimePumpkin;
     public bool isRarePumpkin;
@@ -19,14 +15,14 @@ public class PumpkinTrigger : MonoBehaviour {
     }
 
     void OnEnable() {
-        int i = UnityEngine.Random.Range(0, 20);
+        int i = UnityEngine.Random.Range(0, 22);
         // change stats
         if (i < 5) {
             isSpeedPumpkin = true;
             Array.ForEach(pumpkinRenderers, p => p.ChangeColor(PumpkinRender.PumpkinColors.BluePumpkin));
             this.gameObject.name = "SPEED Pumpkin";
         }
-        else if (i < 10) {
+        else if (i < 9) {
             isTimePumpkin = true;
             Array.ForEach(pumpkinRenderers, p =>  p.ChangeColor(PumpkinRender.PumpkinColors.GreenPumpkin));
             this.gameObject.name = "TIME Pumpkin";

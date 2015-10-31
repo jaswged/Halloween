@@ -106,12 +106,13 @@ public class Maze : MonoBehaviour {
     }
 
     public void SpawnPumpkin(GameObject pumpkin) {
-        //pumpkin.SetActive(false);
+        pumpkin.SetActive(false);
         //activeCells[Random.Range(0, activeCells.Count - 1)];
         int x = Random.Range(0, size.X);
         int z = Random.Range(0, size.Z);
         MazeCell currentCell = cells[x, z];
-       // Debug.Log("Adding a pumpkin in cell " + x + "," + z);
+        //if(currentCell.hasPumpkin)
+        //    Debug.Log("Adding a pumpkin in cell " + x + "," + z);
 
         pumpkin.transform.position = currentCell.transform.position;
         pumpkin.transform.rotation = gameObject.transform.rotation;
