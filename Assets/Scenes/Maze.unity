@@ -119,7 +119,7 @@ MonoBehaviour:
   oldTimer: 30
   timerText: {fileID: 1556417587}
   pumpkinText: {fileID: 1358734673}
-  levelLoadingTexture: {fileID: 2800000, guid: 344e16064c2a54647ac4429484fc8f04, type: 3}
+  levelLoadingTexture: {fileID: 2800000, guid: fc872ac294ff3c341a09e3eabe9d0e0e, type: 3}
   pumpkinPrefab: {fileID: 145318, guid: de9079e1bf1dab044bd56bf04361866c, type: 2}
   maxPumpkins: 8
 --- !u!4 &960192246
@@ -580,7 +580,7 @@ GameObject:
   - 114: {fileID: 2124772010}
   - 114: {fileID: 2124772009}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: TimerCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

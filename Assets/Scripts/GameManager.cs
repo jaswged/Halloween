@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour {
 
     public UnityEngine.UI.Text timerText;
     public UnityEngine.UI.Text pumpkinText;
+    Canvas canvas;
     public Texture levelLoadingTexture;
     private bool isGeneratingMaze;
 
@@ -29,6 +30,7 @@ public class GameManager : MonoBehaviour {
 
     void Awake() { 
         manager = this;
+        canvas = GameObject.Find("TimerCanvas").GetComponent<Canvas>();
     }
 
     void Start () {
@@ -88,6 +90,7 @@ public class GameManager : MonoBehaviour {
         ResetTimer();
         PumpkinCount = 0;
         isGeneratingMaze = false;
+        canvas.enabled = true;
     }
 
     internal void PumpkinFound(PumpkinTrigger pumpkinTrigger, bool isSpecialPumpkin, bool isRare) {
@@ -144,7 +147,8 @@ public class GameManager : MonoBehaviour {
 
     void OnGUI() {
         if (isGeneratingMaze) {
-            //GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), levelLoadingTexture);
+            GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), levelLoadingTexture);
+            canvas.enabled = false;
         }
         if(isLevelOver) {
             GUI.color = Color.white;

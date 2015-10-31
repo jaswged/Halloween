@@ -31,7 +31,7 @@ public class PumpkinTrigger : MonoBehaviour {
             Array.ForEach(pumpkinRenderers, p =>  p.ChangeColor(PumpkinRender.PumpkinColors.GreenPumpkin));
             this.gameObject.name = "TIME Pumpkin";
         }
-        else if(i < 12) {
+        else if(i < 11) {
             isRarePumpkin = true;
             Array.ForEach(pumpkinRenderers, p => p.ChangeColor(PumpkinRender.PumpkinColors.RedPumpkin));
             this.gameObject.name = "RARE_Pumpkin";
